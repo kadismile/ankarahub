@@ -1,0 +1,21 @@
+.spt_main_header_categories .category__h4 {
+    font-size: 16px;
+    padding-left: 0px;
+    text-align: center;
+}
+
+.spt_main_header_categories .category__li {
+    font-size: 13px;
+    text-align: center;
+}
+
+.spt_main_header_categories ul li a {
+    margin-bottom: 0px;
+}
+
+.spt_main_header_categories hr {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 0;
+    border-top: 1px solid #2d2d2d;
+}
