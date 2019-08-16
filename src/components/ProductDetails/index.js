@@ -25,8 +25,6 @@ class ProductDetails extends React.Component{
     $(document).ready(function(){
       $(this).scrollTop(0);
     });
-
-
     setTimeout(()=>{
       //this.props.onClearProduct();
       this.props.getSingleProduct(this.props.match.params.name);
@@ -71,68 +69,71 @@ class ProductDetails extends React.Component{
         <div className="spt_main_single_product">
           <div className="container">
             <div className="col-md-6 col-sm-6 col-xs-12">
-              <div className="spt_main_single_product_carousel">
-                <div className="swiper-container spt_main_single_product_carousel_image">
-                  <div className="swiper-wrapper">
-                    {
-                      product.images.map((m)=> {
-                        return (
-                          <div className="swiper-slide">
-                            <img src={m.src} alt="" />
-                          </div>
-                        )
-                      })
-                    }
-
-
-                  </div>
-                </div>
-                <div className="swiper-container spt_main_single_product_carousel_thumbs">
-                  <div className="swiper-wrapper">
-                    <div className="swiper-slide">
+              {
+                product.images.length > 1 ?
+                <div className="spt_main_single_product_carousel">
+                  <div className="swiper-container spt_main_single_product_carousel_image">
+                    <div className="swiper-wrapper">
                       {
-                        product.images.map((m)=> {
+                        product.images.map((m) => {
                           return (
-                            <div className="spt_main_single_product_carousel_thumb">
-                              <img src={m.src} alt="" />
+                            <div className="swiper-slide">
+                              <img src={m.src} alt=""/>
                             </div>
                           )
                         })
                       }
 
                     </div>
+                  </div>
+                  <div className="swiper-container spt_main_single_product_carousel_thumbs">
+                    <div className="swiper-wrapper">
+
+                      <div className="swiper-slide">
+                        {
+                          product.images.map((m) => {
+                            return (
+                              <div className="spt_main_single_product_carousel_thumb">
+                                <img src={m.src} alt=""/>
+                              </div>
+                            )
+                          })
+                        }
+                      </div>
+                    </div>
+
 
                   </div>
                 </div>
-              </div>
+                  :
 
+                  <div className="swiper-slide">
+                    {
+                      product.images.map((m) => {
+                        return (
+                          <div >
+                            <img src={m.src} alt="" style={{width: '100%'}}/>
+                          </div>
+                        )
+                      })
+                    }
+                  </div>
+              }
               <div className="spt_main_single_product_aditional_info">
                 <div className="spt_main_single_product_carousel_nav">
-                  <div className="spt_main_single_product_carousel_next">
-                    <i className="fa fa-long-arrow-down" aria-hidden="true" />
-                  </div>
-                  <div className="spt_main_single_product_carousel_prev">
-                    <i className="fa fa-long-arrow-up" aria-hidden="true" />
-                  </div>
-                </div>
+                  {
+                    product.images.length > 1 ?
+                    <>
+                      <div className="spt_main_single_product_carousel_next">
+                        <i className="fa fa-long-arrow-down" aria-hidden="true" />
+                      </div>
+                      <div className="spt_main_single_product_carousel_prev">
+                      <i className="fa fa-long-arrow-up" aria-hidden="true" />
+                      </div>
+                    </> :
+                      ''
+                  }
 
-                <div className="spt_main_single_product_review">
-                  <div className="spt_main_single_product_rating">
-                    <p>Rate the Item:</p>
-                    <ul>
-                      <li />
-                      <li />
-                      <li />
-                      <li />
-                      <li />
-                    </ul>
-                  </div>
-                </div>
-                <div className="spt_main_single_product_wishlist">
-                  <p>Add to Wishlist:</p>
-                  <button type="submit">
-                    <i className="fa fa-heart" aria-hidden="true" />
-                  </button>
                 </div>
 
               </div>
@@ -179,56 +180,14 @@ class ProductDetails extends React.Component{
                       </div>
                     </div>
                     <div className="col-md-4 col-sm-3 col-xs-12">
-                      <div className="spt_main_single_product_attribute_size">
-                        <p>Size</p>
-                        <div className="spt_select spt_select_size">
-                          <p>
-                            <span data-value="XS">XS</span>
-                            <i className="fa fa-angle-down" aria-hidden="true" />
-                          </p>
-                          <ul>
-                            <li className="spt_active" data-value="XS">XS</li>
-                            <li data-value="S">S</li>
-                            <li data-value="M">M</li>
-                            <li data-value="L">L</li>
-                            <li data-value="XL">XL</li>
-                            <li data-value="XXL">XXL</li>
-                          </ul>
-                        </div>
+                      <div className="spt_main_single_product_add_cart">
+                        <button type="submit">Add to cart</button>
                       </div>
                     </div>
-                    <div className="col-md-4 col-sm-4 col-xs-12">
-                      <div className="spt_main_single_product_attribute_color">
-                        <p>Color</p>
-                        <div className="spt_select spt_select_color">
-                          <p>
-                            <span data-value="#00AEEF" />
-                            <i className="fa fa-angle-down" aria-hidden="true" />
-                          </p>
-                          <ul>
-                            <li className="spt_active" data-value="#00AEEF" />
-                            <li data-value="#3C763D" />
-                            <li data-value="#CA4545" />
-                            <li data-value="#337AB7" />
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
+
                   </div>
                 </div>
-                <div className="spt_main_single_product_add_cart">
-                  <button type="submit">Add to cart</button>
-                </div>
-                <div className="spt_main_single_product_share">
-                  <p>Share the Item:</p>
-                  <ul>
-                    <li><a href="http://facebook.com/"><i className="fa fa-facebook" aria-hidden="true" /></a></li>
-                    <li><a href="http://google.com/"><i className="fa fa-google-plus" aria-hidden="true" /></a></li>
-                    <li><a href="http://twitter.com/"><i className="fa fa-twitter" aria-hidden="true" /></a></li>
-                    <li><a href="http://linkedin.com/"><i className="fa fa-linkedin" aria-hidden="true" /></a></li>
-                    <li><a href="http://pinterest.com/"><i className="fa fa-pinterest-p" aria-hidden="true" /></a></li>
-                  </ul>
-                </div>
+
               </div>
             </div>
             <div className="col-md-12 col-sm-12 col-xs-12">
@@ -350,7 +309,7 @@ class ProductDetails extends React.Component{
 
 function mapStateToProps(state) {
   return {
-    product: state.product.singleProduct
+    product: state.singleProduct.data
   };
 }
 
@@ -358,6 +317,9 @@ function matchDispatchToProps(dispatch) {
   return {
     getSingleProduct(slug) {
       dispatch(productActions.querySingleProduct(slug));
+    },
+    onclearPoduct() {
+      dispatch(productActions.clearProduct());
     },
     /*onClearProduct() {
       dispatch(productActions.clearProduct());

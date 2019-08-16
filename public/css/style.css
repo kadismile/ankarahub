@@ -4712,12 +4712,12 @@ header {
     width: 25px;
 }
 .spt_main_single_product_add_cart {
-    border-bottom: 1px solid #E2E2E2;
+   /* border-bottom: 1px solid #E2E2E2;
     padding-bottom: 32px;
-    margin-bottom: 25px;
+    margin-bottom: 25px;*/
     margin-top: 18px;
-    border-top: 1px solid #E2E2E2;
-    padding-top: 32px;
+   /* border-top: 1px solid #E2E2E2;
+    padding-top: 32px;*/
 }
 .spt_main_single_product_add_cart button {
     display: block;

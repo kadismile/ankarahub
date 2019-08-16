@@ -4,10 +4,12 @@ import Category from "../../components/Categories";
 import { categoryActions } from "../../actions/categoryActions";
 import Products from "../../components/Products";
 import loadjs from "loadjs";
+import {productActions} from "../../actions/productActions";
 
 class Home extends React.Component {
 
   componentDidMount(){
+    //this.props.onclearPoduct();
     loadjs(`${process.env.REACT_APP_PUBLIC_URL}/js/jquery.js`);
     loadjs(`${process.env.REACT_APP_PUBLIC_URL}/js/custom.js`);
     loadjs(`${process.env.REACT_APP_PUBLIC_URL}/js/swiper.js`);
@@ -230,6 +232,9 @@ function matchDispatchToProps(dispatch) {
   return {
     getCategories() {
       dispatch(categoryActions.queryCategories());
+    },
+    onclearPoduct() {
+      dispatch(productActions.clearProduct());
     },
   };
 }
